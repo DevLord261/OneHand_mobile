@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterproject/data/DB.dart';
 import 'package:flutterproject/screen/Home.dart';
 import 'package:flutterproject/screen/Login.dart';
+import 'package:flutterproject/services/AuthService.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required for SQLite
@@ -9,21 +10,28 @@ void main() async {
   // Initialize database
   await DBContext.instance.database;
 
-  runApp(const MaterialApp(home: MyApp()));
+  runApp(MaterialApp(home: AuthCheck()));
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class AuthCheck extends StatelessWidget {
+  final AuthService _authService = AuthService();
 
-  @override
-  State<StatefulWidget> createState() => _MyApp();
-}
-
-class _MyApp extends State<MyApp> {
-  // This widget is the root of your application.
+  AuthCheck({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Home();
+    return FutureBuilder<bool>(
+      future: _authService.isLoggedIn(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        } else {
+          final bool isLoggedIn = snapshot.data ?? false;
+          return isLoggedIn ? const Home() : const Login();
+        }
+      },
+    );
   }
 }
