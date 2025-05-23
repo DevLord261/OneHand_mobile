@@ -20,6 +20,7 @@ class AuthCheck extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // FutureBuilder is just a combine of future and build widget which checks for login before returning the home page
     return FutureBuilder<bool>(
       future: _authService.isLoggedIn(),
       builder: (context, snapshot) {
