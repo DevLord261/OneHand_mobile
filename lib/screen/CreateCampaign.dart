@@ -13,9 +13,6 @@ class Campaign extends StatefulWidget {
 class _campaign extends State<Campaign> {
   File? _image; // To store selected image
 
-  final TextEditingController _textController =
-      TextEditingController(); // Controller for TextField
-
   // Function to pick an image
   Future<void> _pickImage() async {
     final ImagePicker _picker = ImagePicker();
