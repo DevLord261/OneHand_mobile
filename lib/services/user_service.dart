@@ -37,8 +37,6 @@ class UserService {
 
   // Create new user
   Future<int> createUser({
-    required String firstName,
-    required String lastName,
     required String username,
     required String email,
     required String password,
@@ -46,8 +44,6 @@ class UserService {
     final db = await dbContext.database;
 
     return await db.insert('users', {
-      'first_name': firstName,
-      'last_name': lastName,
       'username': username,
       'email': email,
       'password': password, // Note: In a real app, this should be hashed

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutterproject/data/DB.dart';
+import 'package:flutterproject/main.dart';
 import 'package:flutterproject/screen/Login.dart';
+import 'package:flutterproject/services/AuthService.dart';
+import 'package:flutterproject/services/user_service.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -9,6 +13,10 @@ class Signup extends StatefulWidget {
 }
 
 class _Signup extends State<Signup> {
+  final TextEditingController username = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+
   bool isvisible = true;
   @override
   Widget build(BuildContext context) {
@@ -29,6 +37,7 @@ class _Signup extends State<Signup> {
                   ),
                   const SizedBox(height: 20),
                   TextField(
+                    controller: username,
                     decoration: InputDecoration(
                       hintText: 'Username',
                       border: OutlineInputBorder(
@@ -38,6 +47,7 @@ class _Signup extends State<Signup> {
                   ),
                   const SizedBox(height: 20),
                   TextField(
+                    controller: email,
                     decoration: InputDecoration(
                       hintText: 'Email',
                       border: OutlineInputBorder(
@@ -47,6 +57,7 @@ class _Signup extends State<Signup> {
                   ),
                   const SizedBox(height: 20),
                   TextField(
+                    controller: password,
                     obscureText: isvisible,
                     decoration: InputDecoration(
                       hintText: 'Password',
@@ -66,7 +77,25 @@ class _Signup extends State<Signup> {
                   ),
                   const SizedBox(height: 30),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      var result = await UserService().createUser(
+                        username: username.text,
+                        email: email.text,
+                        password: password.text,
+                      );
+                      print(result);
+                      if (result > 0) {
+                        var islogin = await AuthService().login(
+                          username.text,
+                          password.text,
+                        );
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => AuthCheck()),
+                        );
+                        print(islogin);
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
                       padding: const EdgeInsets.symmetric(
@@ -79,7 +108,7 @@ class _Signup extends State<Signup> {
                       elevation: 5,
                     ),
                     child: const Text(
-                      'Login',
+                      'Register',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
