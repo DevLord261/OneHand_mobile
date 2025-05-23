@@ -10,6 +10,8 @@ class Login extends StatefulWidget {
 }
 
 class _Login extends State<Login> {
+  final TextEditingController username = TextEditingController();
+  final TextEditingController password = TextEditingController();
   bool isvisible = true;
   @override
   Widget build(BuildContext context) {
