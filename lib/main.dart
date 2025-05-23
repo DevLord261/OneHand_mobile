@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutterproject/data/DB.dart';
+import 'package:flutterproject/screen/Home.dart';
 import 'package:flutterproject/screen/Login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Required for SQLite
+
+  // Initialize database
+  await DBContext.instance.database;
+
   runApp(const MaterialApp(home: MyApp()));
 }
 
@@ -19,6 +24,6 @@ class _MyApp extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Login();
+    return Home();
   }
 }

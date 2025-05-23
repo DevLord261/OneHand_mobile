@@ -22,9 +22,9 @@ class _HomeState extends State<Home> {
             onPressed:
                 () => {
                   // Define the action when the plus icon is clicked
-                  Navigator.pushReplacement(
+                  Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Campaign()),
+                    MaterialPageRoute(builder: (context) => Campaign()),
                   ),
                   // You can navigate, show a dialog, etc.
                 },
