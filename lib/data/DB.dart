@@ -43,7 +43,7 @@ class DBContext {
           id SERIAL PRIMARY KEY,
           title TEXT,
           description TEXT,
-          image BYTEA,  -- store binary image data
+          image BYTEA,
           donation_goal DOUBLE PRECISION,
           category TEXT,
           user_id INT,
