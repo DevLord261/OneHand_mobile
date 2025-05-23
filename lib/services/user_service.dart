@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutterproject/data/DB.dart';
 import 'package:crypto/crypto.dart';
-import 'package:path/path.dart';
 
 class UserService {
   final dbContext = DBContext.instance;

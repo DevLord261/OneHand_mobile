@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/screen/CreateCampaign.dart';
+import 'package:flutterproject/main.dart';
+import 'package:flutterproject/services/AuthService.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,15 +20,19 @@ class _HomeState extends State<Home> {
           // Add the plus icon to the AppBar's actions
           IconButton(
             icon: Icon(Icons.add), // Plus icon
-            onPressed:
-                () => {
-                  // Define the action when the plus icon is clicked
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Campaign()),
-                  ),
-                  // You can navigate, show a dialog, etc.
-                },
+            onPressed: () async {
+              // Define the action when the plus icon is clicked
+              await AuthService().logout();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => AuthCheck()),
+              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => Campaign()),
+              // ),
+              // You can navigate, show a dialog, etc.
+            },
           ),
         ],
       ),

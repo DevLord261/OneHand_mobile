@@ -15,8 +15,8 @@ class _campaign extends State<Campaign> {
 
   // Function to pick an image
   Future<void> _pickImage() async {
-    final ImagePicker _picker = ImagePicker();
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
 
     if (image != null) {
       setState(() {
@@ -84,8 +84,7 @@ class _campaign extends State<Campaign> {
             Align(
               alignment: Alignment.center,
               child: ElevatedButton(
-                onPressed: () {}, // Call the confirm function when pressed
-                child: const Text('Confirm'),
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 50,
@@ -95,7 +94,8 @@ class _campaign extends State<Campaign> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10), // Rounded corners
                   ),
-                ),
+                ), // Call the confirm function when pressed
+                child: const Text('Confirm'),
               ),
             ),
           ],

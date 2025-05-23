@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/screen/Home.dart';
+import 'package:flutterproject/main.dart';
 import 'package:flutterproject/screen/Signup.dart';
+import 'package:flutterproject/services/AuthService.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,6 +13,7 @@ class Login extends StatefulWidget {
 class _Login extends State<Login> {
   final TextEditingController username = TextEditingController();
   final TextEditingController password = TextEditingController();
+
   bool isvisible = true;
   @override
   Widget build(BuildContext context) {
@@ -76,6 +78,7 @@ class _Login extends State<Login> {
                   ),
                   const SizedBox(height: 20),
                   TextField(
+                    controller: username,
                     decoration: InputDecoration(
                       hintText: 'Username',
                       border: OutlineInputBorder(
@@ -85,6 +88,7 @@ class _Login extends State<Login> {
                   ),
                   const SizedBox(height: 20),
                   TextField(
+                    controller: password,
                     obscureText: isvisible,
                     decoration: InputDecoration(
                       hintText: 'Password',
@@ -104,15 +108,18 @@ class _Login extends State<Login> {
                   ),
                   const SizedBox(height: 30),
                   ElevatedButton(
-                    onPressed:
-                        () => {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Home(),
-                            ),
-                          ),
-                        },
+                    onPressed: () async {
+                      var result = await AuthService().login(
+                        username.text,
+                        password.text,
+                      );
+                      if (result) {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => AuthCheck()),
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
                       padding: const EdgeInsets.symmetric(
