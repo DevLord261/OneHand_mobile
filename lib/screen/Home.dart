@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterproject/main.dart';
+import 'package:flutterproject/screen/CreateCampaign.dart';
 import 'package:flutterproject/services/AuthService.dart';
 
 class Home extends StatefulWidget {
@@ -22,17 +23,10 @@ class _HomeState extends State<Home> {
           IconButton(
             icon: Icon(Icons.add), // Plus icon
             onPressed: () async {
-              // Define the action when the plus icon is clicked
-              await AuthService().logout();
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AuthCheck()),
+                MaterialPageRoute(builder: (context) => Campaign()),
               );
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => Campaign()),
-              // ),
-              // You can navigate, show a dialog, etc.
             },
           ),
         ],
