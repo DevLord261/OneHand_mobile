@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutterproject/services/CampaignServices.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Campaign extends StatefulWidget {
@@ -16,7 +18,10 @@ class _campaign extends State<Campaign> {
   // Function to pick an image
   Future<void> _pickImage() async {
     final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    final XFile? image = await picker.pickImage(
+      source: ImageSource.gallery,
+      imageQuality: 80,
+    );
 
     if (image != null) {
       setState(() {
@@ -24,6 +29,9 @@ class _campaign extends State<Campaign> {
       });
     }
   }
+
+  final TextEditingController Title = TextEditingController();
+  final TextEditingController Description = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +72,7 @@ class _campaign extends State<Campaign> {
             ),
             SizedBox(height: 20),
             TextField(
+              controller: Title,
               decoration: InputDecoration(
                 hintText: 'Title',
                 border: OutlineInputBorder(
@@ -73,6 +82,7 @@ class _campaign extends State<Campaign> {
             ),
             SizedBox(height: 20),
             TextField(
+              controller: Description,
               maxLines: 10,
               decoration: InputDecoration(
                 hintText: 'Description',
@@ -85,7 +95,23 @@ class _campaign extends State<Campaign> {
             Align(
               alignment: Alignment.center,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  if (_image != null) {
+                    Uint8List image = await _image!.readAsBytes();
+                    var result = await Campaignservices().CreateCampaign(
+                      Title.text,
+                      Description.text,
+                      image,
+                      Category.Medical,
+                      1000,
+                    );
+                    if (result > 0) {
+                      print("succesfull");
+                    } else {
+                      print("something went wrong");
+                    }
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 50,
