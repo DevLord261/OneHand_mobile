@@ -1,7 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutterproject/main.dart';
 import 'package:flutterproject/screen/CreateCampaign.dart';
 import 'package:flutterproject/services/AuthService.dart';
+import 'package:flutterproject/services/CampaignServices.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -67,7 +70,15 @@ class _HomeState extends State<Home> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     padding: const EdgeInsets.all(12),
-                    child: Center(child: Text('Card $index')),
+                    child: FutureBuilder<Uint8List>(
+                      future: Campaignservices().getimage(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Image.memory(snapshot.data!);
+                        }
+                        return const Center(child: CircularProgressIndicator());
+                      },
+                    ),
                   );
                 }),
               ),
