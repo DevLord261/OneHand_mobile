@@ -28,6 +28,7 @@ class _campaign extends State<Campaign> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(title: Text("Create campaign")),
       body: Padding(
         padding: EdgeInsets.all(15),
