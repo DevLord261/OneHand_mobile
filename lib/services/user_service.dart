@@ -45,7 +45,7 @@ class UserService {
     required String password,
   }) async {
     final db = await dbContext.database;
-    password = hashpassword(password).toString();
+    password = hashpassword(password);
     return await db.insert('users', {
       'username': username,
       'email': email,
@@ -56,7 +56,7 @@ class UserService {
   // Login user
   Future<Map<String, dynamic>?> login(String username, String password) async {
     final db = await dbContext.database;
-    password = hashpassword(password).toString();
+    password = hashpassword(password);
     final List<Map<String, dynamic>> maps = await db.query(
       'users',
       where: 'username = ? AND password = ?',
@@ -73,7 +73,7 @@ class UserService {
     return null;
   }
 
-  Future<String?> hashpassword(String password) async {
+  String hashpassword(String password) {
     final bytes = utf8.encode(password);
     String hashedpassword = sha256.convert(bytes).toString();
     return hashedpassword;
