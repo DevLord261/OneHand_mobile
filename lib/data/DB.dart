@@ -70,6 +70,7 @@ class DBContext {
             donation_goal REAL,
             category TEXT,
             user_id INTEGER
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         );
       ''');
       developer.log('Campaign table created', name: 'DBContext');
