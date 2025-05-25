@@ -102,7 +102,7 @@ class _campaign extends State<Campaign> {
                       Title.text,
                       Description.text,
                       image,
-                      Category.Medical,
+                      Category.medical,
                       1000,
                     );
                     if (result > 0) {

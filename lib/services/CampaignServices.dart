@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'package:flutterproject/data/DB.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum Category { Medical, Business, Technology, Restoring }
+enum Category { medical, business, technology, resotring }
 
 class Campaignservices {
   final dbContext = DBContext.instance;
