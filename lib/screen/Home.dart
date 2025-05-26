@@ -1,9 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutterproject/main.dart';
 import 'package:flutterproject/screen/CreateCampaign.dart';
-import 'package:flutterproject/services/AuthService.dart';
 import 'package:flutterproject/services/CampaignServices.dart';
 
 class Home extends StatefulWidget {
