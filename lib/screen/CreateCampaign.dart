@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutterproject/screen/Home.dart';
 import 'package:flutterproject/services/CampaignServices.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -157,7 +158,10 @@ class _campaign extends State<Campaign> {
                       1000,
                     );
                     if (result > 0) {
-                      print("succesfull");
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => Home()),
+                      );
                     } else {
                       print("something went wrong");
                     }
