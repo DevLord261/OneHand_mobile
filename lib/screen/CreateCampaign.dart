@@ -14,6 +14,7 @@ class Campaign extends StatefulWidget {
 
 class _campaign extends State<Campaign> {
   File? _image; // To store selected image
+  Category? _selectedcategory;
 
   // Function to pick an image
   Future<void> _pickImage() async {
@@ -32,14 +33,15 @@ class _campaign extends State<Campaign> {
 
   final TextEditingController Title = TextEditingController();
   final TextEditingController Description = TextEditingController();
+  final TextEditingController Donationgoal = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(title: Text("Create campaign")),
-      body: Padding(
-        padding: EdgeInsets.all(15),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(8),
         child: Column(
           children: [
             GestureDetector(
@@ -89,6 +91,55 @@ class _campaign extends State<Campaign> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Container(
+              width: double.infinity,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: TextField(
+                      controller: Donationgoal,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                      decoration: InputDecoration(
+                        hintText: 'Donation Goal (Amount)',
+                        prefixIcon: Icon(Icons.attach_money),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 8),
+                  Expanded(
+                    flex: 1,
+                    child: DropdownButtonFormField<Category>(
+                      value: _selectedcategory,
+                      isExpanded: true,
+                      decoration: InputDecoration(
+                        hintText: 'Select Category',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      items:
+                          Category.values.map((Category category) {
+                            return DropdownMenuItem<Category>(
+                              value: category,
+                              child: Text(category.name),
+                            );
+                          }).toList(),
+                      onChanged: (Category? newValue) {
+                        setState(() {
+                          _selectedcategory = newValue;
+                        });
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: 20),

@@ -33,5 +33,5 @@ insert and select capabilities.
 
 - [ ] Include at least one model class to store that data of the app.
 
-- [ ] Organize the app using the Flutter project structure: models, data, assets,
+- [x] Organize the app using the Flutter project structure: models, data, assets,
 screens, widgets, etc.
