@@ -75,14 +75,6 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: const Text("OneHand"),
         backgroundColor: Colors.lightBlue,
-        actions: [
-          // Clear filters button
-          IconButton(
-            icon: const Icon(Icons.clear_all),
-            onPressed: _clearFilters,
-            tooltip: 'Clear filters',
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
