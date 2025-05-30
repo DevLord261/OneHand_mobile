@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutterproject/main.dart';
 import 'package:flutterproject/screen/Login.dart';
-import 'package:flutterproject/services/AuthService.dart';
+import 'package:flutterproject/services/auth_service.dart';
 import 'package:flutterproject/services/user_service.dart';
 
 class Signup extends StatefulWidget {

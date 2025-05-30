@@ -33,8 +33,9 @@ class DBContext {
 
       return await openDatabase(
         path,
-        version: 1,
+        version: 2, // Increase version to 2
         onCreate: _onCreate,
+        onUpgrade: _onUpgrade, // Add upgrade handler
         onOpen: (db) {
           developer.log('Database opened successfully', name: 'DBContext');
         },
@@ -42,6 +43,36 @@ class DBContext {
     } catch (e) {
       developer.log('Error in _initDatabase: $e', name: 'DBContext');
       rethrow;
+    }
+  }
+
+  // Handle database upgrades
+  Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
+    developer.log(
+      'Upgrading database from v$oldVersion to v$newVersion',
+      name: 'DBContext',
+    );
+
+    if (oldVersion < 2) {
+      // Add current_donations column to campaign table
+      try {
+        await db.execute(
+          'ALTER TABLE campaign ADD COLUMN current_donations REAL DEFAULT 0.0',
+        );
+        developer.log(
+          'Added current_donations column to campaign table',
+          name: 'DBContext',
+        );
+      } catch (e) {
+        developer.log(
+          'Error adding current_donations column: $e',
+          name: 'DBContext',
+        );
+        // If error is not about column already existing, rethrow it
+        if (!e.toString().contains('duplicate column name')) {
+          rethrow;
+        }
+      }
     }
   }
 
@@ -60,7 +91,7 @@ class DBContext {
       ''');
       developer.log('Users table created', name: 'DBContext');
 
-      // Create campaign table
+      // Create campaign table - include current_donations column for new installs
       await db.execute('''
         CREATE TABLE campaign (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -69,7 +100,8 @@ class DBContext {
             image BLOB,
             donation_goal REAL,
             category TEXT,
-            user_id INTEGER
+            user_id INTEGER,
+            current_donations REAL DEFAULT 0.0,
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         );
       ''');
@@ -78,5 +110,19 @@ class DBContext {
       developer.log('Error creating database tables: $e', name: 'DBContext');
       rethrow;
     }
+  }
+
+  // Utility method to reset the database (for testing)
+  Future<void> resetDatabase() async {
+    if (_database != null) {
+      await _database!.close();
+      _database = null;
+    }
+
+    String databasesPath = await getDatabasesPath();
+    String path = join(databasesPath, 'database.db');
+
+    await deleteDatabase(path);
+    developer.log('Database deleted', name: 'DBContext');
   }
 }
