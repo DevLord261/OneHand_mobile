@@ -45,7 +45,7 @@ class Campaignservices {
     // Use AuthService to get userId
     final userId = await _authService.getCurrentUserId();
 
-    if (userId <= 0) {
+    if (userId.isEmpty) {
       developer.log(
         'Cannot create campaign: No valid user is logged in',
         name: 'CampaignServices',
@@ -96,7 +96,7 @@ class Campaignservices {
       // Use AuthService to get userId
       final userId = await _authService.getCurrentUserId();
 
-      if (userId <= 0) {
+      if (userId.isEmpty) {
         developer.log('User ID not found or invalid', name: 'CampaignServices');
         return [];
       }
@@ -166,7 +166,7 @@ class Campaignservices {
       // Get current user ID
       final userId = await _authService.getCurrentUserId();
 
-      if (userId <= 0) {
+      if (userId.isEmpty) {
         developer.log(
           'Cannot delete campaign: No valid user is logged in',
           name: 'CampaignServices',

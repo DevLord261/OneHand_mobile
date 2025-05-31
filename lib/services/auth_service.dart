@@ -16,7 +16,7 @@ class AuthService {
     if (user != null && user['id'] != null) {
       // Save to shared preferences
       final prefs = await SharedPreferences.getInstance();
-      await prefs.setInt(userIdKey, user['id']);
+      await prefs.setString(userIdKey, user['id']);
       await prefs.setString(usernameKey, user['username']);
 
       // Log for debugging
@@ -47,17 +47,17 @@ class AuthService {
   // Check if user is logged in with a valid user ID
   Future<bool> isLoggedIn() async {
     final prefs = await SharedPreferences.getInstance();
-    final userId = prefs.getInt(userIdKey);
-    return userId != null && userId > 0;
+    final userId = prefs.getString(userIdKey);
+    return userId != null;
   }
 
   // Get the current user's ID with better validation
-  Future<int> getCurrentUserId() async {
+  Future<String> getCurrentUserId() async {
     final prefs = await SharedPreferences.getInstance();
-    final userId = prefs.getInt(userIdKey) ?? -1;
+    final userId = prefs.getString(userIdKey);
 
     // Log for debugging
-    if (userId <= 0) {
+    if (userId == null) {
       developer.log(
         'No valid user ID found in preferences',
         name: 'AuthService',
@@ -66,7 +66,7 @@ class AuthService {
       developer.log('Retrieved user ID: $userId', name: 'AuthService');
     }
 
-    return userId;
+    return userId.toString();
   }
 
   // Get the current username
