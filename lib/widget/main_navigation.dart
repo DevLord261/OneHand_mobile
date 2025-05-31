@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/screen/home.dart';
+import 'package:flutterproject/screen/Home.dart';
 import 'package:flutterproject/screen/create_campaign.dart';
 import 'package:flutterproject/screen/my_campaigns.dart';
 
@@ -12,7 +12,7 @@ class MainNavigation extends StatefulWidget {
 
 class _MainNavigationState extends State<MainNavigation> {
   int _selectedIndex = 0;
-  
+
   // List of widgets to display
   static final List<Widget> _widgetOptions = <Widget>[
     const Home(),
@@ -32,10 +32,7 @@ class _MainNavigationState extends State<MainNavigation> {
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_circle, size: 30),
             label: 'Create',

@@ -3,7 +3,7 @@ import 'package:flutterproject/data/DB.dart';
 import 'package:flutterproject/models/Campaign.dart';
 import 'package:flutterproject/screen/campaign_details.dart';
 import 'package:flutterproject/screen/create_campaign.dart';
-import 'package:flutterproject/screen/home.dart';
+import 'package:flutterproject/screen/Home.dart';
 import 'package:flutterproject/screen/my_campaigns.dart';
 import 'package:flutterproject/widget/main_navigation.dart';
 import 'package:flutterproject/screen/Login.dart';
