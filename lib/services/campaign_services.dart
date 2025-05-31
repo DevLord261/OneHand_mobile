@@ -132,6 +132,35 @@ class Campaignservices {
     }
   }
 
+  Future<List<Campaign>> getAllCampaigns() async {
+    try {
+      final db = await dbContext.database;
+      final result = await db.query('campaign');
+
+      // Safely convert maps to Campaign objects with null checks
+      return result
+          .map((map) {
+            try {
+              return Campaign.fromMap(map);
+            } catch (e) {
+              developer.log(
+                'Error converting map to Campaign: $e',
+                name: 'CampaignServices',
+              );
+              return null;
+            }
+          })
+          .whereType<Campaign>()
+          .toList(); // Filter out any nulls
+    } catch (e) {
+      developer.log(
+        'Error getting user campaigns: $e',
+        name: 'CampaignServices',
+      );
+      return [];
+    }
+  }
+
   Future<bool> deleteCampaign(int campaignId) async {
     try {
       // Get current user ID

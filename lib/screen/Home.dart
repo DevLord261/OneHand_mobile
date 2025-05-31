@@ -141,7 +141,7 @@ class _HomeState extends State<Home> {
 
               // Campaigns list with filtering
               FutureBuilder<List<Campaign>>(
-                future: _campaignService.getUserCampaigns(),
+                future: _campaignService.getAllCampaigns(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(
