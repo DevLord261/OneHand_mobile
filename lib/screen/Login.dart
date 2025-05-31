@@ -18,7 +18,7 @@ class _Login extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       body: Column(
         children: [
           // Top Gradient Container with Sign Up

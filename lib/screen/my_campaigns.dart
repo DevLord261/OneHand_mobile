@@ -29,6 +29,9 @@ class _MyCampaignsState extends State<MyCampaigns> {
 
       if (!mounted) return;
 
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(' logging out')));
       // Navigate to the AuthCheck which will redirect to Login
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => AuthCheck()),

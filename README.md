@@ -15,23 +15,23 @@ Contact us, Settings, etc.
 
 - [x] Use varied layout widgets: Row, Column, Stack, etc.
 
-- [ ] Ensure the communication between the application widgets by lifting state
+- [x] Ensure the communication between the application widgets by lifting state
 up.
 
 - [x] Use a local SQL database to store your data. The operations should include
 insert and select capabilities.
 
-- [ ] Use at least 2 different Dialog/SnackBar.
+- [x] Use at least 2 different Dialog/SnackBar.
 
-- [ ] Use a ListView/GridView to display a list of items.
+- [x] Use a ListView/GridView to display a list of items.
 
 - [x] Get user input using TextField, DropDownButtons, etc.
 
-- [ ] Use Navigators to go from one screen to another.
+- [x] Use Navigators to go from one screen to another.
 
-- [ ] Use either Tab Bar or Side Drawer to show the different app screens.
+- [x] Use either Tab Bar or Side Drawer to show the different app screens.
 
-- [ ] Include at least one model class to store that data of the app.
+- [x] Include at least one model class to store that data of the app.
 
 - [x] Organize the app using the Flutter project structure: models, data, assets,
 screens, widgets, etc.
