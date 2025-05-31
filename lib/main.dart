@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/data/DB.dart';
-import 'package:flutterproject/models/Campaign.dart';
-import 'package:flutterproject/screen/campaign_details.dart';
-import 'package:flutterproject/screen/create_campaign.dart';
-import 'package:flutterproject/screen/Home.dart';
-import 'package:flutterproject/screen/my_campaigns.dart';
-import 'package:flutterproject/widget/main_navigation.dart';
-import 'package:flutterproject/screen/Login.dart';
-import 'package:flutterproject/services/auth_service.dart';
+import 'package:OneHand/data/DB.dart';
+import 'package:OneHand/models/Campaign.dart';
+import 'package:OneHand/screen/campaign_details.dart';
+import 'package:OneHand/screen/create_campaign.dart';
+import 'package:OneHand/screen/Home.dart';
+import 'package:OneHand/screen/my_campaigns.dart';
+import 'package:OneHand/widget/main_navigation.dart';
+import 'package:OneHand/screen/Login.dart';
+import 'package:OneHand/services/auth_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

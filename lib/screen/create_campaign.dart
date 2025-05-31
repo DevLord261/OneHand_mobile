@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterproject/models/Campaign.dart';
-import 'package:flutterproject/widget/main_navigation.dart';
-import 'package:flutterproject/services/campaign_services.dart';
+import 'package:OneHand/models/Campaign.dart';
+import 'package:OneHand/widget/main_navigation.dart';
+import 'package:OneHand/services/campaign_services.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CreateCampaign extends StatefulWidget {
@@ -16,7 +16,7 @@ class CreateCampaign extends StatefulWidget {
 
 class _CreateCampaignState extends State<CreateCampaign> {
   File? _image;
-  Category? _selectedCategory = Category.medical; 
+  Category? _selectedCategory = Category.medical;
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
 

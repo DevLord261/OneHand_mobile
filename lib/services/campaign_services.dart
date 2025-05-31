@@ -2,9 +2,9 @@ import 'dart:typed_data';
 import 'dart:developer' as developer;
 import 'package:flutter/services.dart' show rootBundle;
 
-import 'package:flutterproject/data/DB.dart';
-import 'package:flutterproject/models/Campaign.dart';
-import 'package:flutterproject/services/auth_service.dart';
+import 'package:OneHand/data/DB.dart';
+import 'package:OneHand/models/Campaign.dart';
+import 'package:OneHand/services/auth_service.dart';
 
 class Campaignservices {
   final dbContext = DBContext.instance;

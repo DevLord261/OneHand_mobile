@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/main.dart';
-import 'package:flutterproject/screen/Signup.dart';
-import 'package:flutterproject/services/auth_service.dart';
+import 'package:OneHand/main.dart';
+import 'package:OneHand/screen/Signup.dart';
+import 'package:OneHand/services/auth_service.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

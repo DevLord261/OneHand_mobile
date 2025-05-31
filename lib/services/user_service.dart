@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutterproject/data/DB.dart';
+import 'package:OneHand/data/DB.dart';
 import 'package:crypto/crypto.dart';
 
 class UserService {

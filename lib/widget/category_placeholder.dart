@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/models/Campaign.dart';
-import 'package:flutterproject/utils/category_utils.dart';
+import 'package:OneHand/models/Campaign.dart';
+import 'package:OneHand/utils/category_utils.dart';
 
 class CategoryPlaceholder extends StatelessWidget {
   final Category category;
@@ -14,7 +14,6 @@ class CategoryPlaceholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Color baseColor = CategoryUtils.getColor(category);
 
     Color backgroundColor = baseColor.withOpacity(0.7);

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/models/Campaign.dart';
-import 'package:flutterproject/services/campaign_services.dart';
-import 'package:flutterproject/widget/campaign_card.dart';
-import 'package:flutterproject/screen/campaign_details.dart';
-import 'package:flutterproject/utils/category_utils.dart';
+import 'package:OneHand/models/Campaign.dart';
+import 'package:OneHand/services/campaign_services.dart';
+import 'package:OneHand/widget/campaign_card.dart';
+import 'package:OneHand/screen/campaign_details.dart';
+import 'package:OneHand/utils/category_utils.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

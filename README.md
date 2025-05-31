@@ -1,4 +1,4 @@
-# flutterproject
+# OneHand
 
 A mobile version  of the onehand web project using flutter for CSC415 mobile deveopment final project
 

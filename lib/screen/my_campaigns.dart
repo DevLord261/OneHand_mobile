@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/models/Campaign.dart';
-import 'package:flutterproject/screen/create_campaign.dart';
-import 'package:flutterproject/screen/campaign_details.dart';
-import 'package:flutterproject/services/campaign_services.dart';
-import 'package:flutterproject/widget/campaign_card.dart';
-import 'package:flutterproject/services/auth_service.dart';
-import 'package:flutterproject/main.dart';
+import 'package:OneHand/models/Campaign.dart';
+import 'package:OneHand/screen/create_campaign.dart';
+import 'package:OneHand/screen/campaign_details.dart';
+import 'package:OneHand/services/campaign_services.dart';
+import 'package:OneHand/widget/campaign_card.dart';
+import 'package:OneHand/services/auth_service.dart';
+import 'package:OneHand/main.dart';
 
 class MyCampaigns extends StatefulWidget {
   const MyCampaigns({super.key});

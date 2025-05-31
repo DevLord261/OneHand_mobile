@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/models/Campaign.dart';
-import 'package:flutterproject/utils/category_utils.dart';
-import 'package:flutterproject/widget/category_placeholder.dart';
+import 'package:OneHand/models/Campaign.dart';
+import 'package:OneHand/utils/category_utils.dart';
+import 'package:OneHand/widget/category_placeholder.dart';
 
 class CampaignCard extends StatelessWidget {
   final Campaign campaign;

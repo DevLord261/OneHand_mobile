@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/screen/Home.dart';
-import 'package:flutterproject/screen/create_campaign.dart';
-import 'package:flutterproject/screen/my_campaigns.dart';
+import 'package:OneHand/screen/Home.dart';
+import 'package:OneHand/screen/create_campaign.dart';
+import 'package:OneHand/screen/my_campaigns.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});

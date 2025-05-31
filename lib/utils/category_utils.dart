@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/models/Campaign.dart';
+import 'package:OneHand/models/Campaign.dart';
 
 /// A utility class to handle category-related helper functions.
 /// This centralizes the category display logic to avoid code duplication.
@@ -17,7 +17,7 @@ class CategoryUtils {
         return Colors.green[400]!;
     }
   }
-  
+
   /// Get the icon associated with a specific category
   static IconData getIcon(Category category) {
     switch (category) {
@@ -31,7 +31,7 @@ class CategoryUtils {
         return Icons.restore;
     }
   }
-  
+
   /// Get the display name associated with a specific category
   static String getName(Category category) {
     switch (category) {
